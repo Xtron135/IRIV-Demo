@@ -115,19 +115,6 @@ timestamp = time.time()
 disp.begin()
 
 while True:
-    # Shutdown if button is pressed.
-    # if (GPIO.input(POWER_BUTTON) == 0) :
-        # if (oled_init == True):
-            # try:
-                # Clear display.
-                # disp.clear()
-                # disp.display()
-            # except:
-                # pass
-                
-        # os.system("sudo shutdown -h now")
-        # while True:
-            # pass
             
             
     # Display status periodically.
@@ -153,6 +140,17 @@ while True:
         draw.text((x, top+8),  " Press The > USER <", font=font, fill=255)
         draw.text((x, top+16), " Button to Continue", font=font, fill=255)
         #draw.text((x, top+25), "   1st Experience  ", font=font, fill=255)
+        #draw.text((x, top+25), str(Disk,'utf-8'), font=font, fill=255)
+        disp.image(image.rotate(180))
+        disp.display()
+
+        while(GPIO.input(POWER_BUTTON) == 1):
+            time.sleep(0.2)
+
+        draw.rectangle((0,0,width,height), outline=0, fill=0)
+        draw.text((x, top+8),  " Connect to Network", font=font, fill=255)
+        draw.text((x, top+16), "     'IRIV Demo'   ", font=font, fill=255)
+        draw.text((x, top+25), "  >>  Continue  << ", font=font, fill=255)
         #draw.text((x, top+25), str(Disk,'utf-8'), font=font, fill=255)
         disp.image(image.rotate(180))
         disp.display()
