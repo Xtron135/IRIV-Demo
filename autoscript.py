@@ -154,6 +154,7 @@ while True:
         #draw.text((x, top+25), str(Disk,'utf-8'), font=font, fill=255)
         disp.image(image.rotate(180))
         disp.display()
+        time.sleep(2)
 
         while(GPIO.input(POWER_BUTTON) == 1):
             time.sleep(0.2)
